@@ -41,6 +41,16 @@ struct ListNode *swapPairs(struct ListNode *head) {
   return dummyHead->next;
 }
 
+struct ListNode* swapPairs2(struct ListNode* head){
+    if(head==NULL||head->next==NULL){
+        return head;
+    }
+    struct ListNode* newhead=head->next;
+    head->next=swapPairs(newhead->next);
+    newhead->next=head;
+    return newhead;
+}
+
 void show(ListNode *l) { // 遍历链表并打印
   ListNode *p = l;
   if (p->next == NULL)
