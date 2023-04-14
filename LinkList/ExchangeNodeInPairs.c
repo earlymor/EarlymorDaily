@@ -18,27 +18,23 @@ void create_tail(ListNode *head) {
   p->next = s;
 }
 
-struct ListNode *swapPairs(struct ListNode *head) {
-  if (head == NULL || head->next == NULL) {
-    return head;
-  }
-  struct ListNode *dummyHead =
-      (struct ListNode *)malloc(sizeof(struct ListNode));
-  dummyHead->next = head;
-  struct ListNode *cur = dummyHead;
-  struct ListNode *next = head;
-  struct ListNode *temp = head->next->next;
-  while (cur->next) {
-    cur->next = cur->next->next;
-    cur->next->next = next;
-    next->next = temp;
-    cur = cur->next->next;
-    if (next->next == NULL)
-      break;
-    next = cur->next;
-    temp = cur->next->next->next;
-  }
-  return dummyHead->next;
+struct ListNode* swapPairs(struct ListNode* head){
+    if(head==NULL||head->next==NULL){
+        return head;
+    }
+    struct ListNode* dummyHead=(struct ListNode*)malloc(sizeof(struct ListNode));
+    dummyHead->next=head;
+    struct ListNode* cur=dummyHead;
+    struct ListNode* next=head;
+    while(cur->next&&cur->next->next){
+        struct ListNode* temp=next->next->next;
+        cur->next=cur->next->next;
+        cur->next->next=next;
+        next->next=temp;
+        cur=cur->next->next;
+        next=cur->next;
+    }
+    return dummyHead->next;
 }
 
 struct ListNode* swapPairs2(struct ListNode* head){
