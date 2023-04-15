@@ -20,7 +20,7 @@ void create_tail(ListNode *head) {
 
 struct ListNode* swapPairs(struct ListNode* head){
     if(head==NULL||head->next==NULL){
-        return head;
+        return head; 
     }
     struct ListNode* dummyHead=(struct ListNode*)malloc(sizeof(struct ListNode));
     dummyHead->next=head;
